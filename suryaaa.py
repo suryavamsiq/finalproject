@@ -86,7 +86,7 @@ if ( selected == 'NUTRIENTS PREDICTION'):
 
         
         output=''
-        if st.button('recommended crop'):
+        if st.button('PREDICTED VALUES'):
             output=prediction1([rainfall,temp,humidity,ph,label])
         
         st.success(output) 
