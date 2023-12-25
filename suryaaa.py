@@ -15,7 +15,7 @@ crop_model=pickle.load(open('1trainedmodel.sav','rb'))
 nutri_model=pickle.load(open('trainedmodel1.sav','rb'))
 
 with st.sidebar:
-    selected = option_menu('CHOOSING MODELS', ['NUTRIENTS PREDICTION','CROP RECOMMENDATION'],default_index=0)
+    selected = option_menu('AGRISENSE: ADVANCED CROP INSIGHT- choose any service', ['NUTRIENTS FORECAST ELITE SYSTEM','CROP ADVISORY SYSTEM'],default_index=0)
  
 if ( selected == 'NUTRIENTS PREDICTION'):
     def prediction1(input_data):
@@ -29,7 +29,7 @@ if ( selected == 'NUTRIENTS PREDICTION'):
 
         
     def main():
-        st.title("NUTRIENTS SYSTEM WEB APP")
+        st.title("NUTRIENTS FORECAST ELITE SYSTEM")
         #rainfall', 'temperature', 'humidity','ph','label
         rainfall=st.text_input('enter value of rainfall')
         temp=st.text_input('enter value of temperature')
@@ -86,7 +86,7 @@ if ( selected == 'NUTRIENTS PREDICTION'):
 
         
         output=''
-        if st.button('recommended crop'):
+        if st.button('PREDICTED VALUES'):
             output=prediction1([rainfall,temp,humidity,ph,label])
         
         st.success(output) 
@@ -95,11 +95,11 @@ if ( selected == 'NUTRIENTS PREDICTION'):
     if __name__=='__main__':
         main()
 
-if ( selected =='CROP RECOMMENDATION'):
+if ( selected =='CROP ADVISORY SYSTEM'):
     def prediction(input_data):
         newValues1=np.array(input_data)
         newValues1=newValues1.reshape(1,-1)
-        return ('The recommended model for your data is',crop_model.predict(newValues1))
+        return ('The recommended model for your data is', np.array(crop_model.predict(newValues1)))
         
     def main():
         st.title("CROP RECOMMENDATION SYSTEM WEB APP")
@@ -113,7 +113,7 @@ if ( selected =='CROP RECOMMENDATION'):
         rainfall=st.text_input('enter value of rainfall')
         
         output=''
-        if st.button('recommended crop'):
+        if st.button('ADVISORY CROP'):
             output=prediction([N,P,K,temp,humidity,ph,rainfall])
         
         st.success(output) 
