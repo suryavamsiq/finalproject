@@ -11,8 +11,8 @@ from streamlit_option_menu import option_menu
 import pandas as pd
 import numpy as np
 
-crop_model=pickle.load(open('C:/Users/c surya vamsi/1trainedmodel.sav','rb'))
-nutri_model=pickle.load(open('C:/Users/c surya vamsi/Downloads/trainedmodel1.sav','rb'))
+crop_model=pickle.load(open('1trainedmodel.sav','rb'))
+nutri_model=pickle.load(open('trainedmodel1.sav','rb'))
 
 with st.sidebar:
     selected = option_menu('CHOOSING MODELS', ['NUTRIENTS PREDICTION','CROP RECOMMENDATION'],default_index=0)
