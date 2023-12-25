@@ -15,9 +15,9 @@ crop_model=pickle.load(open('1trainedmodel.sav','rb'))
 nutri_model=pickle.load(open('trainedmodel1.sav','rb'))
 
 with st.sidebar:
-    selected = option_menu('CHOOSE ANY SERVICE', ['NUTRIENTS PREDICTION','CROP RECOMMENDATION'],default_index=0)
+    selected = option_menu('CHOOSE ANY SERVICE', ['NutriForecast Precision System','CropElite Advisory System'],default_index=0)
  
-if ( selected == 'NUTRIENTS PREDICTION'):
+if ( selected == 'NutriForecast Precision System'):
     def prediction1(input_data):
         new_data = pd.DataFrame({'rainfall': [input_data[0]], 'temperature': [input_data[1]], 'humidity': [input_data[2]], 'ph': [input_data[3]], 'label': [input_data[4]]})
         new_predictions = nutri_model.predict(new_data)
@@ -29,7 +29,7 @@ if ( selected == 'NUTRIENTS PREDICTION'):
 
         
     def main():
-        st.title("NUTRIENTS SYSTEM WEB APP")
+        st.title("NutriForecast Precision System")
         #rainfall', 'temperature', 'humidity','ph','label
         rainfall=st.text_input('enter value of rainfall')
         temp=st.text_input('enter value of temperature')
@@ -95,14 +95,14 @@ if ( selected == 'NUTRIENTS PREDICTION'):
     if __name__=='__main__':
         main()
 
-if ( selected =='CROP RECOMMENDATION'):
+if ( selected =='CropElite Advisory System'):
     def prediction(input_data):
         newValues1=np.array(input_data)
         newValues1=newValues1.reshape(1,-1)
         return ('The recommended model for your data is',crop_model.predict(newValues1))
         
     def main():
-        st.title("CROP RECOMMENDATION SYSTEM WEB APP")
+        st.title("CropElite Advisory System")
         #N	P	K	temperature	humidity	ph	rainfall	label
         N=st.text_input('enter value of N')
         P=st.text_input('enter value of P')
