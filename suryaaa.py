@@ -15,7 +15,7 @@ crop_model=pickle.load(open('1trainedmodel.sav','rb'))
 nutri_model=pickle.load(open('trainedmodel1.sav','rb'))
 
 with st.sidebar:
-    selected = option_menu('CHOOSING MODELS', ['NUTRIENTS PREDICTION','CROP RECOMMENDATION'],default_index=0)
+    selected = option_menu('CHOOSE ANY SERVICE', ['NUTRIENTS PREDICTION','CROP RECOMMENDATION'],default_index=0)
  
 if ( selected == 'NUTRIENTS PREDICTION'):
     def prediction1(input_data):
